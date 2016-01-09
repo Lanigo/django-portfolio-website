@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header %}
+    <header>
+        <a href="{% url 'home' %}"><img class='logo' src="{% static "images/logo.png"%}"/></a>
+        <ul id="menu">
+            <li><a class="menu" href="{% url 'post_list' %}">Blog</a></li>
+            <li><a class="menu" href="{% url 'contact' %}">Contact</a></li>
+            <li><a class="menu" href="{% url 'projects' %}">Projects</a></li>
+            <li><a class="menu" href="{% url 'about' %}">About</a></li>
+    </header>
+{% endblock %}
+
+{% block body %}
+	<div class="jumbo">
+		<div class="jumbo1">
+			<h2>Welcome!</h2>
+			<h3>Have a look around.</h3>
+			<p>Hi. My name is Lani. I am a self taught 	web developer and obsessed with coding and learning.</p>
+			<p>I started learning to code in September 2014. This portfolio is the result of dedication, determination and 12-18 hours of work a day over 15 months.</p>
+			<p>Have a look at my 
+			<a href="/projects">Projects</a> page. Read more <a href="/about">About</a> my journey. Read my <a href="/blog">Blog</a>, with hopefully useful advice for new developers. When you've done all that drop me an email on my <a href="/contact">Contact</a> page.</p>
+		</div>
+		<div class="jumbo2">
+			<h4>Find me here:</h4>
+			<a href="https://github.com/Lanigo">
+				<img class='contact' src="{% static 'images/Octocat.jpg'%}"/>
+			</a>
+			<a href="https://twitter.com/lanigouws1">
+				<img class='contact' src="{% static 'images/TwitterLogo_#55acee.png'%}"/>
+			</a>
+			<a href="https://za.linkedin.com/in/lani-gouws-19424585">
+				<img class='contact' src="{% static 'images/linkedin.png'%}"/>
+			</a>
+		</div>
+		<div class="recent">
+			{% load post_tags %}
+    		{% get_recent_posts %}
+   		</div>
+		<div class="jumbo3">
+			<h3>About this Site</h3>
+			<p>I coded and designed this site myself, from scratch.  It uses Python, <a href="https://www.djangoproject.com/">Django</a> and <a href="https://www.mysql.com/">MySQL</a>. I originally used Flask and MongoDB, until I realised how that limited my deployment options. You can find the code for both the original and this one on <a href="https://github.com/Lanigo">Github</a>.</p>
+			<p>This site also uses two jQuery plugins: 
+			<a href="https://github.com/codrops/Slicebox">Slicebox: The jQuery 3D image slider</a> by <a href=" http://www.codrops.com">codrops</a> and <a href="https://github.com/gdsmith/jquery.easing">jquery-easing v1.3</a> by <a href="http://gsgd.co.uk/">GSGD</a></p>
+		</div>
+	</div>
+{% endblock %}
+ 
+{% block footer %}
+	<div class="footer">
+		<p class="footer">Created and maintained by Lani Gouws &#169; 2015.</p>
+	</div>
+{% endblock %}
+

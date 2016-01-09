@@ -1,0 +1,12 @@
+{% block body %}
+	<div class="block">	
+		<h4>Recent Posts from My Blog</h4>
+		<hr />
+		<br />
+		<div class="recent_posts">
+	{% for post in posts %}
+		<a class="menu" href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a><br/>{{ post.published_date }}<br/><br/>
+	{% endfor %}
+	<hr />
+	<a class="menu" href="{% url 'feeds_posts' %}">Subscribe to this Feed</a></div>
+{% endblock %}</div>

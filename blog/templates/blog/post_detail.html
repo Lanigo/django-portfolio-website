@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block header %}
+    <header>
+        <a href="{% url 'home' %}"><img class='logo' src="{% static "images/logo.png"%}"/></a>
+        <ul id="menu">
+            <li><a class="menu" href="{% url 'home' %}">Home</a></li>
+            <li><a class="menu" href="{% url 'about' %}">About</a></li>
+            <li><a class="menu" href="{% url 'contact' %}">Contact</a></li>
+            <li><a class="menu" href="{% url 'projects' %}">Projects</a></li>
+    </header>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+	<h3>{{ post.title }}</h3>
+	<a href="https://twitter.com/share" class="twitter-share-button"{count} data-text="Read this!" data-via="lanigouws1" data-size="large">Tweet</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		{% if post.published_date %}
+			<div class="date">
+				<p class="date">{{ post.published_date }}</p>
+			</div>
+		{% endif %}
+		
+		<p>{{ post.text|safe }}</p>
+  	{% if post.tags.similar_objects %}
+    	<h4>Read These Similar Posts:</h4>
+    	{% for s in post.tags.similar_objects|slice:":3" %}
+      		<li class="posts"><a class="comments" href={% url 'post_detail' s.slug %}>{{s}}</a></li>
+    		{% if not forloop.last %},{% endif%}
+    	{% endfor %}
+  	{% endif %}
+	<hr />
+	<div class="links">
+		<a href="{% url 'add_comment_to_post' slug=post.slug %}"><h4>Add Comment</h4></a>
+	</div>
+	{% for comment in post.comments.all %}
+	<div class="comment">
+	<p class="date">On {{ comment.created_at }} <strong>{{ comment.author }}</strong> said:</p>
+		<p>{{ comment.text|linebreaks }}</p>
+	</div>
+	<hr />
+	{% empty %}
+		<p>No comments here yet</p>
+	{% endfor %}
+</div>
+{% endblock %}

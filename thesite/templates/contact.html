@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header %}
+    <header>
+        <a href="{% url 'home' %}"><img class='logo' src="{% static "images/logo.png"%}"/></a>
+        <ul id="menu">
+            <li><a class="menu" href="{% url 'home' %}">Home</a></li>
+            <li><a class="menu" href="{% url 'about' %}">About</a></li>
+            <li><a class="menu" href="{% url 'post_list' %}">Blog</a></li>
+            <li><a class="menu" href="{% url 'projects' %}">Projects</a></li>
+    </header>
+{% endblock %}
+
+{% block body %}
+<div class="welcome">
+	<h2>Contact</h2>
+</div>
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+  
+    <form action="/contact/" method="post">{% csrf_token %}
+        <p class="form">Subject:<br/>
+        <input type="text" name="subject"></p>
+        <p class="form">Your e-mail:<br/>
+        <input type="text" name="email"></p>
+        <p class="form">What would you like to say?:<br/>
+        <textarea name="message" rows="10" cols="50"></textarea></p>
+        <input class="submit" type="submit" value="Submit">
+    </form>
+<br/>
+{% endblock %}

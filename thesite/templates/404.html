@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+<title>Page not found</title>
+    {% block header %}
+    <header>
+        <a href="{% url 'home' %}"><img class='logo' src="{% static "images/logo.png"%}"/></a>
+        <ul id="menu">
+             <li><a class="menu" href="{% url 'post_list' %}">Blog</a></li>
+            <li><a class="menu" href="{% url 'contact' %}">Contact</a></li>
+            <li><a class="menu" href="{% url 'about' %}">About</a></li>
+            <li><a class="menu" href="{% url 'projects' %}">Projects</a></li>
+    </header>
+    {% endblock %}
+
+{% block body %}
+	<a href="{% url 'home' %}"><img class='error' src="{% static "images/404.png"%}"/></a>
+{% endblock %}

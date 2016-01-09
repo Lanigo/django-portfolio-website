@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+    {% block head %}
+    <head>
+        <title>Lani Gouws</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+ 	      {% load staticfiles %}
+        <link href="{% static 'thesite/main.css' %}" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.ico" %}" />
+    </head>
+    {% endblock %}
+{% block header %}
+    <header>
+        <a href="{% url 'home' %}"><img class='logo' src="{% static "images/logo.png"%}"/></a>
+        <ul id="menu">
+            <li><a class="menu" href="{% url 'home' %}">Home</a></li>
+            <li><a class="menu" href="{% url 'post_list' %}">Blog</a></li>
+            <li><a class="menu" href="{% url 'contact' %}">Contact</a></li>
+            <li><a class="menu" href="{% url 'projects' %}">Projects</a></li>
+    </header>
+{% endblock %}
+{% block body %}
+<body>
+	<div class="jumbo_about">
+		<h2>About Lani</h2>
+	</div>
+
+	<div class="square_block">
+		<div class="squares">
+			<img src="{% static 'images/eerste.png' %}" alt="Who I am" title="who-I-am" width="280" height="280"/>
+			<span class="caption">
+				<p class="about"> 
+					I live in picturesque Clarens, South Africa. I have two degrees:  B.Prim.Ed and BA Psych(Honns). <br/>	
+					I used to be a teacher, but that's not my passion.<br/>	
+					In 2008 I was in an accident which took the lives of both my sisters and also my ability to lift my left arm. <br/>	
+					In the years since, I often thought about changing careers to do something I really love.  I really love technology. I really love solving problems.
+				</p>
+			</span>
+		</div>
+
+		<div class="squares">
+			<img src="{% static 'images/tweede.png' %}" alt="How I got here" title="how-I-got-here" width="280" height="280"/>
+			<span class="caption">
+				<p class="about">
+					Little over a year ago, I knew nothing about web development. <br />
+					I was lucky enough to have some time.<br/>
+					I took care of my landlord's kids and their afternoon activities and homework, so I also had some money.<br/>         
+					I have spent 12-18 hours a day over 15 months learning and building and working towards becoming a self taught developer.<br/>
+					It has taken a lot of dedication, but it's been so much fun!
+				</p>
+			</span>
+		</div>
+
+		<div class="squares">
+			<img src="{% static 'images/derde.png' %}" alt="What can I do" title="what-can-I-do" width="280" height="280"/>
+			<span class="caption">
+				<p class="about">
+					- <strong>HTML5,</strong><br />
+					- <strong>CSS3,</strong><br />
+					- <strong>JavaScript:</strong><br />
+					--- jQuery<br />
+					--- AngularJS<br />
+					--- Meteor.js<br />
+					- <strong>Python:</strong><br />
+					--- Flask<br />
+					--- Django<br />
+					- <strong>MongoDB</strong><br />
+					- <strong>MySQL</strong> and some PostgreSQL<br />
+					 To get a better idea of my capabilities, please visit my 
+					<a href="/projects">Projects</a> page.
+				</p>
+			</span>
+		</div>
+
+		<div class="squares">
+			<img src="{% static 'images/vierde.png' %}" alt="What's next for me" title="what's-next-for-me" width="280" height="280"/>
+			<span class="caption">
+				<p class="about">
+					More learning! Everyday I learn something new. There is so much I still want to know, and be able to do.<br/>
+					Also, I've taken so much from open source resources that it's only right to give some back. That is what I'd like to do through my 
+					<a href="/blog">blog</a> and contributing to open source projects.<br/>
+					Then I'd also like a j.o.b. please!<br/>
+					If you would like to work with me, please see my 
+					<a href="/contact">Contact</a> page or find me on social media.
+				</p>
+			</span>
+		</div>
+	</div>
+</body>	
+{% endblock %}
+	{% block javascript %}
+    	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script type="text/javascript" src="{% static "js/jquery.easing.1.3.js" %}"></script>
+		<script type="text/javascript" src="{% static "js/about.js" %}"></script>
+	{% endblock %}
